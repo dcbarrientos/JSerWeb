@@ -1,0 +1,237 @@
+<!--Copyright
+	JSerWeb Copyright 2006 Diego C. Barrientos, dc_barrientos@yahoo.com.ar
+	
+	This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as
+	published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+	
+	This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+	
+	You should have received a copy of the GNU General Public Licence along with this program, if not, write to de Free Software
+	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA. 
+-->
+<html><!-- #BeginTemplate "/Templates/serweb.dwt" -->
+<head>
+
+<title>JSerWeb Server Documentation</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="serweb.css" type="text/css">
+<script language="JavaScript" src="serweb.js">
+</script>
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<TABLE height=424 cellSpacing=0 cellPadding=0 width=770 align=center border=0>
+<tr><td>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td bgcolor="#0099CC" height="45" background="images/fTitulo.png" valign="top"> 
+      <div align="right"><b><font face="Arial, Helvetica, sans-serif" size="4" color="#FFFFFF" class="titulo"><img src="images/titulo.png" width="421" height="47" alt="JSerWeb Java Web Server Version 1.0"></font></b></div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+                  <div align="right"><font size="1"><b><font face="Tahoma, sans-serif">
+<script language="JavaScript">
+					document.write(getDate());
+				  </script>
+                    </font></b></font></div>
+    </td>
+  </tr>
+  <tr>
+    <td height="204"> 
+      <table width="100%" border="0" height="139">
+        <tr>
+                <td width="19%" valign="top" height="188"> 
+            <table width="100%" border="0" align="left" cellspacing="0" cellpadding="5" height="362">
+              <tr> 
+                <td colspan="2" bgcolor="#3399CC" background="images/fTabla.png"> 
+                  <div align="center" class="menutitulo"><b><font color="#FFFFFF"><span class="menutitulo">Introduction</span></font></b> 
+                  </div>
+                </td>
+              </tr>
+              <tr> 
+                <td  bgcolor="#DFDFDF" bordercolor="#999999" valign="top" > 
+                  <table width="100%" border="0" cellpadding="0" cellspacing="3">
+                    <tr> 
+                            <td onClick="mouseClick(this);" onMouseOut="mouseOut(this);" onMouseOver="mouseOver(this);" class="fila" height="11"> 
+                              <a href="index.html" class="menulink2"><img src="images/bullet.gif" width="6" height="6" border="0" alt="*"> 
+                              Documentation</a> </td>
+                    </tr>
+                    <tr> 
+                            <td class="fila" onClick="mouseClick(this)"; onMouseOut="mouseOut(this);" onMouseOver="mouseOver(this);" height="2"> 
+                              <a href="index.html#requerimientos" class="menulink2"><img src="images/bullet.gif" width="6" height="6" border="0" alt="*"> 
+                              Requirements</a> </td>
+                    </tr>
+                    <tr> 
+                            <td class="fila" onClick="mouseClick(this);" onMouseOut="mouseOut(this);" onMouseOver="mouseOver(this);" height="2"> 
+                              <a href="index.html#instalacion" class="menulink2"><img src="images/bullet.gif" width="6" height="6" border="0" alt="*"> 
+                              Installation</a> </td>
+                    </tr>
+                    <tr> 
+                            <td class="fila" onClick="mouseClick(this);" onMouseOut="mouseOut(this);" onMouseOver="mouseOver(this);"> 
+                              <a href="index.html#download" class="menulink2"><img src="images/bullet.gif" width="6" height="6" border="0" alt="*"> 
+                              Download</a> </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+              <tr> 
+                <td bordercolor="#999999" background="images/bTabla.png" >&nbsp;</td>
+              </tr>
+              <tr> 
+                <td colspan="2" bgcolor="#3399CC" background="images/fTabla.png"> 
+                  <div align="center" class="menutitulo">User's Guide</div>
+                </td>
+              </tr>
+              <tr> 
+                <td bgcolor="#DFDFDF" bordercolor="#999999" valign="top" > 
+                  <table width="100%" border="0" cellpadding="0" cellspacing="3">
+                    <tr> 
+                            <td class="fila" onClick="mouseClick(this);" onMouseOut="mouseOut(this);" onMouseOver="mouseOver(this);"> 
+                              <img src="images/bullet.gif" width="6" height="6" border="0" alt="*"><a href="configuration.html" class="menulink2"> 
+                              Configuration</a> </td>
+                    </tr>
+                    <tr> 
+                            <td class="fila" onClick="mouseClick(this);" onMouseOut="mouseOut(this);" onMouseOver="mouseOver(this);"> 
+                              <a href="configuration.html#mainconffile" class="menulink2"><img src="images/bullet.gif" width="6" height="6" border="0" alt="*"> 
+                              Main configuration file</a> </td>
+                    </tr>
+                    <tr> 
+                            <td class="fila" onClick="mouseClick(this);" onMouseOut="mouseOut(this);" onMouseOver="mouseOver(this);"> 
+                              <a href="vhosts.html" class="menulink2"><img src="images/bullet.gif" width="6" height="6" border="0" alt="*"> 
+                              Virtual Hosts</a> </td>
+                    </tr>
+                    <tr> 
+                            <td class="fila" onClick="mouseClick(this);" onMouseOut="mouseOut(this);" onMouseOver="mouseOver(this);"> 
+                              <a href="cgi.html" class="menulink2"><img src="images/bullet.gif" width="6" height="6" border="0" alt="*"> 
+                              Dynamic Content with CGI</a> </td>
+                    </tr>
+                    <tr> 
+                            <td class="fila" onClick="mouseClick(this);" onMouseOut="mouseOut(this);" onMouseOver="mouseOver(this);"> 
+                              <a href="cerror.html" class="menulink2"><img src="images/bullet.gif" width="6" height="6" border="0" alt="*"> 
+                              Custrom errors</a> </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+              <tr> 
+                <td bordercolor="#999999" background="images/bTabla.png" >&nbsp;</td>
+              </tr>
+              <tr> 
+                <td colspan="2" bgcolor="#3399CC" background="images/fTabla.png"> 
+                  <div align="center" class="menutitulo">Other topics</div>
+                </td>
+              </tr>
+              <tr>
+                <td bgcolor="#DFDFDF" valign="top" > 
+                  <table width="100%" border="0" cellpadding="0" cellspacing="3">
+                    <tr>
+                            <td class="fila" onClick="mouseClick(this);" onMouseOut="mouseOut(this);" onMouseOver="mouseOver(this);" valign="middle" > 
+                              <a href="license.html" class="menulink2"><img src="images/bullet.gif" width="6" height="6" border="0" alt="*"> 
+                              License</a> </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+<!--
+              <tr> 
+                <td bgcolor="#DFDFDF" > 
+                  <ul id="toc" type="square">
+                    <li class="menulink"><a href="../license.html" class="menulink">License</a></li>
+                  </ul>
+                </td>
+              </tr>
+-->
+              <tr> 
+                <td background="images/bTabla.png"  >&nbsp;</td>
+              </tr>
+            </table>
+            <br>
+          </td>
+                <td width="81%" height="188" valign="top" align="left"> 
+                  <table width="100%" border="0" cellpadding="5" cellspacing="0">
+<!--              <tr> 
+                <td align="right" class="date" height="17"> 
+                </td>
+              </tr>
+-->
+<tr>
+                <td> <!-- #BeginEditable "edit1" --> 
+            <table width="100%" border="1" bordercolor="#999999" cellspacing="0" cellpadding="3">
+              <tr> 
+                <td class="subtitle">Custom errors</td>
+              </tr>
+            </table>
+            <br>
+            <span class="contenido">You can customize your error responses by 
+            specifying the error code and the file in which your customized response 
+            is. All the responses are stored in the directory you set with the 
+            directive </span><span class="fuente">ErrorsRoo</span><span class="contenido">t 
+            in the configuration file </span><span class="fuente">conf/serweb.conf</span><span class="contenido">.</span><br>
+            <br>
+            <br>
+            <table width="100%" border="0">
+              <tr> 
+                <td> 
+                  <div align="center"> 
+                    <table width="75%" border="1" cellpadding="5" cellspacing="0" bgcolor="#DADADA" bordercolor="#666666">
+                      <tr> 
+                        <td> 
+                          <div class="contenido"> 
+                            <div align="center"><b>IMPORTANT: THIS FILES MUST 
+                              EXIST!!!!!!!</b></div>
+                          </div>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </td>
+              </tr>
+            </table>
+            <br>
+            <span class="contenido">Example:</span><br>
+            <table width="100%" border="0">
+              <tr> 
+                <td> 
+                  <div align="center"> 
+                    <table width="75%" border="1" cellpadding="5" cellspacing="0" bgcolor="#DADADA" bordercolor="#666666">
+                      <tr> 
+                        <td class="fuente" align="center">403 /403.html<br>
+                          404 /404.html<br>
+                          501 /501.html<br>
+                          500 /500.html</td>
+                      </tr>
+                    </table>
+                  </div>
+                </td>
+              </tr>
+            </table>
+            <span class="contenido"><br>
+            The HTML error files will be saved in the directory you set with the 
+            directive ErrorsRoot in the file serweb.conf. The error files must 
+            be HTML code. The main benefit is that you can modify the error files 
+            without touching the server configuration files.<br>
+            </span> <!-- #EndEditable --> </td>
+              </tr>
+          </table>
+         
+        </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td height="68"> 
+      <hr>
+            <p align="center"><span class="piepagina"><a href="http://dcbarrientos.phpnet.us"><img src="images/JSerWeb.gif" width="259" height="32" border="0" alt="Powered by JSerWeb"></a><br>
+        </span> <span class="piepagina"><a href="mailto:dc_barrientos@yahoo.com.ar" class="piepagina">Copyright 
+        2006 Diego Barrientos.</a></span><br>
+              <span class="piepagina"><a href="license.html" class="piepagina">GNU License</a> 
+              </span></p>
+      </td>
+  </tr>
+</table>
+</td></tr></table>
+</body>
+<!-- #EndTemplate --></html>
