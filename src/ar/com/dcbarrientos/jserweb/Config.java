@@ -76,10 +76,12 @@ public class Config {
 	
 	boolean loadConfig(String confFile)
 	{
-		DataInputStream fileStream;
+		//DataInputStream fileStream;
+		BufferedReader fileStream;
 		
 		try {	
-			fileStream = new DataInputStream(new FileInputStream(confFile));
+			fileStream = new BufferedReader(new FileReader(confFile)); 
+			//fileStream = new DataInputStream(new FileInputStream(confFile));
 			while(getNextRecord(fileStream)){
 				if(key.length()>0){
 					if(key.equals("port"))
@@ -140,13 +142,13 @@ public class Config {
 	
 	boolean loadVHost(String hostFile)
 	{
-		DataInputStream fileStream;
+		BufferedReader fileStream;
 		boolean abierto = false;
 		vHost vhost = new vHost();
 		String addr="";
 		
 		try{
-			fileStream = new DataInputStream(new FileInputStream(hostFile));
+			fileStream = new BufferedReader(new FileReader(hostFile));
 			while(getNextRecord(fileStream)){
 				if(key.length()>0){
 					if(key.equals("virtualhost")){
@@ -196,10 +198,10 @@ public class Config {
 
 	boolean loadMime(String mimeFile)
 	{
-		DataInputStream fileStream;
+		BufferedReader fileStream;
 
 		try{
-			fileStream = new DataInputStream(new FileInputStream(mimeFile));
+			fileStream = new BufferedReader(new FileReader(mimeFile));
 			while(getNextRecord(fileStream)){
 				if(key.length()>0){
 					mime.put(key, value);
@@ -219,9 +221,9 @@ public class Config {
 
 	boolean loadErrors(String errFile)
 	{
-		DataInputStream fileStream;
+		BufferedReader fileStream;
 		try{
-			fileStream = new DataInputStream(new FileInputStream(errFile));
+			fileStream = new BufferedReader(new FileReader(errFile));
 			while(getNextRecord(fileStream)){
 				if(key.length()>0){
 					errors.put(key, value);
@@ -239,7 +241,7 @@ public class Config {
 		return true;
 	}
 	
-	boolean getNextRecord(DataInputStream f){
+	boolean getNextRecord(BufferedReader f){
 		String strLine="";
 		int i=0;
 		try{

@@ -50,7 +50,8 @@ public class Server extends Thread{
 
 		while(true)
 		{ try
-			{	cli_sock = ser_sock.accept();			
+			{	
+				cli_sock = ser_sock.accept();			
 				transaction = new Transaction(config, cli_sock);
 				transaction.start();
 			}catch(IOException e)

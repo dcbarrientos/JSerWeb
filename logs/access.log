@@ -1,0 +1,11 @@
+[localhost] -- [Thu, 10 Sep 2015 22:04:11 GMT] -- GET / HTTP/1.1 404 Not Found
+[localhost] -- [Thu, 10 Sep 2015 22:04:12 GMT] -- GET /favicon.ico HTTP/1.1 404 Not Found
+[localhost] -- [Thu, 10 Sep 2015 22:04:25 GMT] -- GET / HTTP/1.1 404 Not Found
+[localhost] -- [Thu, 10 Sep 2015 22:04:38 GMT] -- GET / HTTP/1.1 404 Not Found
+[localhost] -- [Thu, 10 Sep 2015 22:05:27 GMT] -- GET / HTTP/1.1 404 Not Found
+[127.0.0.1] -- [Thu, 10 Sep 2015 22:05:38 GMT] -- GET / HTTP/1.1 404 Not Found
+[127.0.0.1] -- [Thu, 10 Sep 2015 22:05:38 GMT] -- GET /favicon.ico HTTP/1.1 404 Not Found
+[localhost] -- [Thu, 10 Sep 2015 22:06:41 GMT] -- GET / HTTP/1.1 404 Not Found
+[localhost] -- [Thu, 10 Sep 2015 22:09:25 GMT] -- GET / HTTP/1.1 200 OK
+[[llooccaallhhoosstt] ]- - -[- T[hTuh,u ,10  1S0e pS e2p0 210155  2222:0:90:925: 2G5M TG]MT -]-  G-E-T  G/EMTa n/ujasle/rsweerbw.egibf. cHssT THPT/T1P./11 .210 02 O0K0
+ OK
