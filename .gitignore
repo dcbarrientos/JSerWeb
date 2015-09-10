@@ -2,3 +2,4 @@ src/build.bat
 conf/*
 httpdoc/*
 logs/*
+php.txt

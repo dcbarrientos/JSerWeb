@@ -25,7 +25,8 @@ import ar.com.dcbarrientos.jserweb.plugins.PhpPlugin;
 
 public class Transaction extends Thread{
 	Config config;
-	DataInputStream in;
+	//DataInputStream in;
+	BufferedReader in;
 	DataOutputStream out;
 	Socket connection;
 	Messages msg;
@@ -55,7 +56,8 @@ public class Transaction extends Thread{
 	String httpTempFilePath="";
 	String httpLocation="";
 	String httpCookie="";
-	byte[] httpPostQuery;
+	//byte[] httpPostQuery;
+	char[] httpPostQuery;
 	int httpContentLength=0;
 	int httpStatus=-1;
 	String httpQuery="";
@@ -72,7 +74,9 @@ public class Transaction extends Thread{
 	
 	public void run(){
 		try
-		{	in = new DataInputStream(connection.getInputStream());		
+		{	
+			//in = new DataInputStream(connection.getInputStream());
+			in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 			out = new DataOutputStream(connection.getOutputStream());
 		}catch(IOException e)
 		{	msg.printErr("Transaction::run:1", e.getMessage());			
@@ -236,7 +240,7 @@ public class Transaction extends Thread{
 //		byte[] others=null;
 		if(httpContentLength>0){
 			try{
-				httpPostQuery = new byte[httpContentLength];
+				httpPostQuery = new char[httpContentLength];
 				in.read(httpPostQuery);			
 			}catch(IOException e){
 				return false;
@@ -621,11 +625,11 @@ public class Transaction extends Thread{
 		this.httpCookie = httpCookie;
 	}
 
-	public byte[] getHttpPostQuery() {
+	public char[] getHttpPostQuery() {
 		return httpPostQuery;
 	}
 
-	public void setHttpPostQuery(byte[] httpPostQuery) {
+	public void setHttpPostQuery(char[] httpPostQuery) {
 		this.httpPostQuery = httpPostQuery;
 	}
 
