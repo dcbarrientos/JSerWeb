@@ -15,9 +15,10 @@
  ***************************************************************************/
 package ar.com.dcbarrientos.jserweb;
 
-import java.io.*;
-import java.net.*;
-import java.util.*;
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.Date;
 
 public class Server extends Thread{	
 	Config config;

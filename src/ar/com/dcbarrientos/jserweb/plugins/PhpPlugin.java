@@ -15,8 +15,12 @@
  ***************************************************************************/
 package ar.com.dcbarrientos.jserweb.plugins;
 
-import java.util.*;
-import java.io.*;
+import java.util.Vector;
+import java.io.IOException;
+import java.io.DataInputStream;
+import java.io.OutputStream;
+import java.io.FileOutputStream;
+import java.io.DataOutputStream;
 
 import ar.com.dcbarrientos.jserweb.Plugin;
 import ar.com.dcbarrientos.jserweb.Transaction;
@@ -91,7 +95,7 @@ public class PhpPlugin extends Plugin
 	boolean getHeader(DataInputStream in, Transaction t){
 		int i=0;
 		String line="";
-//		boolean ret=false;
+
 		try{
 			line = in.readLine().toLowerCase();
 			while(line.length()>0){
