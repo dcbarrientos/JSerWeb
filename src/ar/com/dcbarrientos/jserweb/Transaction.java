@@ -653,7 +653,7 @@ public class Transaction extends Thread{
 	{
 		System.out.println("-----------------------------------------------------");
 		System.out.println(httpVersion +  config.getStatus(httpStatus));
-		System.out.println("Server: " + config.SERVER_ID);
+		System.out.println("Server: " + Config.SERVER_ID);
 		System.out.println("Date: " + httpCurrentDate);
 		System.out.println("Content-Type: " + httpContentType);
 		System.out.println("Connection: close");

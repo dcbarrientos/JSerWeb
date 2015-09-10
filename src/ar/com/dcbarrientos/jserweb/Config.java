@@ -76,12 +76,10 @@ public class Config {
 	
 	boolean loadConfig(String confFile)
 	{
-		//DataInputStream fileStream;
 		BufferedReader fileStream;
 		
 		try {	
 			fileStream = new BufferedReader(new FileReader(confFile)); 
-			//fileStream = new DataInputStream(new FileInputStream(confFile));
 			while(getNextRecord(fileStream)){
 				if(key.length()>0){
 					if(key.equals("port"))
@@ -298,7 +296,6 @@ public class Config {
 	}
 
 	public String getErrorFileName(String key){
-//		String resu = 
 		return (String)(errors.get(key));
 	}
 	
