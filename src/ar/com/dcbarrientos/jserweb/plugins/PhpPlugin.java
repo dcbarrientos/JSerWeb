@@ -21,6 +21,7 @@ import java.io.*;
 import ar.com.dcbarrientos.jserweb.Plugin;
 import ar.com.dcbarrientos.jserweb.Transaction;
 import ar.com.dcbarrientos.jserweb.Messages;
+import ar.com.dcbarrientos.jserweb.Config;
 
 public class PhpPlugin extends Plugin 
 {
@@ -57,13 +58,13 @@ public class PhpPlugin extends Plugin
 			}
 		}			
 		
-		String tmpFile = transaction.config.getTmpFile();
-		String line = "";
+		String tmpFile = transaction.getConfig().getTmpFile();
+//		String line = "";
 		byte[] buffer = new byte[65536];
 		if(proc!=null){			
 			try{				
 				if(!getHeader(in, transaction)){
-					transaction.httpStatus = 500;
+					transaction.setHttpStatus(500);
 					return false;
 				}
 				DataOutputStream out = new DataOutputStream(new FileOutputStream(tmpFile));
@@ -77,12 +78,12 @@ public class PhpPlugin extends Plugin
 				out.flush();			
 				out.close();
 			}catch(IOException e){
-				transaction.httpStatus = 500;
+				transaction.setHttpStatus(500);
 				msg.printErr("PhpPlugin::process:1", e.getMessage());
 			}
 		}
-		transaction.httpTempFilePath = tmpFile;		
-		transaction.httpStatus = 200;
+		transaction.setHttpTempFilePath(tmpFile);		
+		transaction.setHttpStatus(200);
 		return true;
 	}
 	
@@ -90,15 +91,15 @@ public class PhpPlugin extends Plugin
 	boolean getHeader(DataInputStream in, Transaction t){
 		int i=0;
 		String line="";
-		boolean ret=false;
+//		boolean ret=false;
 		try{
 			line = in.readLine().toLowerCase();
 			while(line.length()>0){
 				if(line.indexOf(':')>0){
 					if(line.substring(0,line.indexOf(':')).equals("content-type"))
-						t.httpContentType = line.substring(line.indexOf(':')+1).trim();
+						t.setHttpContentType(line.substring(line.indexOf(':')+1).trim());
 					else if(line.substring(0,line.indexOf(':')).equals("set-cookie"))
-						t.httpSetCookie = line.substring(line.indexOf(':')+1).trim();
+						t.setHttpSetCookie(line.substring(line.indexOf(':')+1).trim());
 						
 					i++;
 				}
@@ -118,36 +119,36 @@ public class PhpPlugin extends Plugin
 	
 	String[] getEnvironment(Transaction t)
 	{
-		Vector tmp = new Vector();;
-		tmp.add("SERVER_SOFTWARE=" + t.config.SERVER_ID);
-		tmp.add("SERVER_NAME=" + t.config.httpServerName);
+		Vector<String> tmp = new Vector<String>();;
+		tmp.add("SERVER_SOFTWARE=" + Config.SERVER_ID);
+		tmp.add("SERVER_NAME=" + t.getConfig().getHttpServerName());
 		tmp.add("GATEWAY_INTERFACE=CGI/1.1");
-		tmp.add("SERVER_PROTOCOL=" + t.httpVersion);
-		tmp.add("SERVER_PORT=" + t.config.httpPort);
-		tmp.add("REQUEST_METHOD=" + t.httpMethod);	
-		tmp.add("PATH_INFO=" + t.httpUrl);	
-		tmp.add("PATH_TRANSLATED=" + t.httpFilePath);
-		tmp.add("QUERY_STRING=" + t.httpQuery);
-		tmp.add("REMOTE_ADDR=" + t.httpHost);
+		tmp.add("SERVER_PROTOCOL=" + t.getHttpVersion());
+		tmp.add("SERVER_PORT=" + t.getConfig().getHttpPort());
+		tmp.add("REQUEST_METHOD=" + t.getHttpMethod());	
+		tmp.add("PATH_INFO=" + t.getHttpUrl());	
+		tmp.add("PATH_TRANSLATED=" + t.getHttpFilePath());
+		tmp.add("QUERY_STRING=" + t.getHttpQuery());
+		tmp.add("REMOTE_ADDR=" + t.getHttpHost());
 		tmp.add("REDIRECT_STATUS=1");
-		tmp.add("HTTP_ACCEPT=" + t.httpAccept);
-		tmp.add("HTTP_ACCEPT_LANGUAGE=" + t.httpLanguage);
-		tmp.add("HTTP_ACCEPT_ENCODING=" + t.httpEncoding);
-		tmp.add("HTTP_USER_AGENT=" + t.httpUserAgent);
-		tmp.add("HTTP_HOST=" + t.httpHost);
-		tmp.add("HTTP_REFER=" + t.httpRefer);
-		tmp.add("HTTP_CACHE_CONTROL=" + t.httpCacheControl);
-		if(t.httpCookie.length()>0)
-			tmp.add("HTTP_COOKIE=" + t.httpCookie);
+		tmp.add("HTTP_ACCEPT=" + t.getHttpAccept());
+		tmp.add("HTTP_ACCEPT_LANGUAGE=" + t.getHttpLanguage());
+		tmp.add("HTTP_ACCEPT_ENCODING=" + t.getHttpEncoding());
+		tmp.add("HTTP_USER_AGENT=" + t.getHttpUserAgent());
+		tmp.add("HTTP_HOST=" + t.getHttpHost());
+		tmp.add("HTTP_REFER=" + t.getHttpRefer());
+		tmp.add("HTTP_CACHE_CONTROL=" + t.getHttpCacheControl());
+		if(t.getHttpCookie().length()>0)
+			tmp.add("HTTP_COOKIE=" + t.getHttpCookie());
 		
-		if(t.httpContentLength>0){
-			tmp.add("HTTP_CONTENT_TYPE=" + t.httpInContentType);
-			tmp.add("HTTP_CONTENT_LENGTH=" + Integer.toString(t.httpContentLength));
-			tmp.add("CONTENT_TYPE=" + t.httpInContentType);
-			tmp.add("CONTENT_LENGTH=" + Integer.toString(t.httpContentLength));
+		if(t.getHttpContentLength()>0){
+			tmp.add("HTTP_CONTENT_TYPE=" + t.getHttpInContentType());
+			tmp.add("HTTP_CONTENT_LENGTH=" + Integer.toString(t.getHttpContentLength()));
+			tmp.add("CONTENT_TYPE=" + t.getHttpInContentType());
+			tmp.add("CONTENT_LENGTH=" + Integer.toString(t.getHttpContentLength()));
 		}
 		
-		if(t.config.httpKeepAlive)
+		if(t.getConfig().isHttpKeepAlive())
 			tmp.add("HTTP_CONNECTION=Keep-Alive");
 		
 		String[] strTmp = new String[tmp.size()];

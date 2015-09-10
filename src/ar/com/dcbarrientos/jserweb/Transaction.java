@@ -17,8 +17,6 @@
 package ar.com.dcbarrientos.jserweb;
 
 import java.io.*;
-import java.lang.*;
-import java.lang.reflect.*;
 import java.net.*;
 import java.util.*;
 
@@ -66,7 +64,7 @@ public class Transaction extends Thread{
 	{
 		this.config = config;
 		connection = socket;
-		plugins = new Plugin[config.nPlugins];
+		plugins = new Plugin[config.getnPlugins()];
 		plugins[0] = new PhpPlugin();
 		plugins[1] = new PerlPlugin();
 		msg = new Messages(config);
@@ -81,7 +79,7 @@ public class Transaction extends Thread{
 		}
 		
 		try
-		{	connection.setSoTimeout(config.httpTimeout*1000);
+		{	connection.setSoTimeout(config.getHttpTimeout()*1000);
 		}catch(SocketException e)
 		{	msg.printErr("Transaction::run 2", e.getMessage());
 		}
@@ -110,7 +108,7 @@ public class Transaction extends Thread{
 
 		if(httpStatus == 200){
 			int j=0;
-			while(j<config.nPlugins && !runplugin){
+			while(j<config.getnPlugins() && !runplugin){
 				runplugin = plugins[j].process(this);
 				j++;
 			}
@@ -123,7 +121,7 @@ public class Transaction extends Thread{
 		else if(httpStatus == 404)		
 			notFound();
 
-		httpTempFilePath = httpTempFilePath.replace('/', config.FILE_SEPARATOR);
+		httpTempFilePath = httpTempFilePath.replace('/', Config.FILE_SEPARATOR);
 		httpFileLength = Integer.toString(getFileSize(httpTempFilePath));
 		sendResponse(httpTempFilePath);
 	
@@ -235,7 +233,7 @@ public class Transaction extends Thread{
 			}
 		}
 		
-		byte[] others=null;
+//		byte[] others=null;
 		if(httpContentLength>0){
 			try{
 				httpPostQuery = new byte[httpContentLength];
@@ -281,7 +279,7 @@ public class Transaction extends Thread{
 		v = config.getVHost(httpHostIp);
 				
 		if(v==null)
-			filePath = config.httpDocumentRoot + url;
+			filePath = config.getHttpDocumentRoot() + url;
 		else{
 			if(v!=null && v.hScriptAliasKey.length()==0){
 				filePath = v.hDocumentRoot + url;
@@ -292,7 +290,7 @@ public class Transaction extends Thread{
 			}
 		}
 					
-		filePath = filePath.replace('/', config.FILE_SEPARATOR);
+		filePath = filePath.replace('/', Config.FILE_SEPARATOR);
 
 		return filePath;
 	}
@@ -329,7 +327,7 @@ public class Transaction extends Thread{
 		try{
 			out.writeBytes(httpVersion +  " " + config.getStatus(httpStatus) + "\r\n");
 				
-			out.writeBytes("Server: " + config.SERVER_ID + "/" + config.VERSION + " by " + config.AUTHOR + "\r\n");	
+			out.writeBytes("Server: " + Config.SERVER_ID + "/" + Config.VERSION + " by " + Config.AUTHOR + "\r\n");	
 			out.writeBytes("Date: " + httpCurrentDate + "\r\n");
 			if(httpContentType != null)
 				out.writeBytes("Content-Type: " + httpContentType + "\r\n");				
@@ -408,7 +406,7 @@ public class Transaction extends Thread{
 	boolean writeAccessLog(String linea)
 	{
 //		String fName = config.getAccessLogFile(ip);
-		return config.writeFile(config.httpLogRoot + config.httpAccessFile, linea);
+		return config.writeFile(config.getHttpLogRoot() + config.getHttpAccessFile(), linea);
 	} 
 	
 	boolean writeErrorLog(String ip, String linea)
@@ -418,7 +416,7 @@ public class Transaction extends Thread{
 		if(fName.length()>0)
 			config.writeFile(fName, linea);			
 			
-		config.writeFile(config.httpLogRoot + config.httpErrorFile, linea);
+		config.writeFile(config.getHttpLogRoot() + config.getHttpErrorFile(), linea);
 		
 		return true;
 	}

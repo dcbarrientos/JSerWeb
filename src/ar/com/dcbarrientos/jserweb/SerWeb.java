@@ -15,6 +15,8 @@
  ***************************************************************************/
 package ar.com.dcbarrientos.jserweb;
 
+import ar.com.dcbarrientos.jserweb.Config;
+
 public class SerWeb {
 
 	public static void main(String argv[])
@@ -78,7 +80,7 @@ public class SerWeb {
 	public static void printVersion(Config config)
 	{
 		System.out.println(config.getVersion());
-		System.out.println("Copyright (c) 2006 " + config.AUTHOR + " <" + config.AUTHOR_MAIL + ">\n");				
+		System.out.println("Copyright (c) 2006 " + Config.AUTHOR + " <" + Config.AUTHOR_MAIL + ">\n");				
 		System.out.println("This software comes with ABSOLUTELY NO WARRANTY. This is free software,");
 		System.out.println("and you are welcome to modify and redistribute it under the GNU General");
 		System.out.println("Public License, which may be found in the file LICENSE.");

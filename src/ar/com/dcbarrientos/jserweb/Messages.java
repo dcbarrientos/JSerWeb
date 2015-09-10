@@ -16,6 +16,8 @@
 
 package ar.com.dcbarrientos.jserweb;
 
+import ar.com.dcbarrientos.jserweb.Config;
+
 public class Messages {
 	Config config;
 	
@@ -26,7 +28,7 @@ public class Messages {
 	
 	public void printErr(String origen, String msg)
 	{		
-		if(config.DEBUG){
+		if(Config.DEBUG){
 			System.out.println(origen);
 			System.out.println("\t" + msg);
 		}

@@ -16,7 +16,6 @@
 package ar.com.dcbarrientos.jserweb;
 
 import java.io.*;
-import java.lang.*;
 import java.net.*;
 import java.util.*;
 
@@ -36,12 +35,14 @@ public class Server extends Thread{
 		Transaction transaction;
 		
 		try
-		{ ser_sock = new ServerSocket(config.httpPort);		
+		{
+			ser_sock = new ServerSocket(config.getHttpPort());		
 		}catch(IOException e)
-		{	msg.printErr("Server::run():1", e.getMessage());		
+		{	
+			msg.printErr("Server::run():1", e.getMessage());		
 			String msgErr = "[" + config.getFormatDate(new Date()) + "] ";
 			msgErr += "Dirección en uso."; 
-			config.writeFile(config.httpLogRoot + config.httpErrorFile, msgErr);
+			config.writeFile(config.getHttpLogRoot() + config.getHttpErrorFile(), msgErr);
 			System.exit(0);
 		}
 
@@ -54,6 +55,12 @@ public class Server extends Thread{
 				transaction.start();
 			}catch(IOException e)
 			{	msg.printErr("Server::run():2", e.getMessage());
+				try {
+					ser_sock.close();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		}
 	}

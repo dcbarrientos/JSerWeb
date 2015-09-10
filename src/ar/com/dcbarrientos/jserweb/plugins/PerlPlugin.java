@@ -131,10 +131,10 @@ public class PerlPlugin extends Plugin
 	{
 		Vector<String> tmp = new Vector<String>();
 		tmp.add("SERVER_SOFTWARE=" + Config.SERVER_ID);
-		tmp.add("SERVER_NAME=" + t.getConfig().httpServerName);
+		tmp.add("SERVER_NAME=" + t.getConfig().getHttpServerName());
 		tmp.add("GATEWAY_INTERFACE=CGI/1.1");
 		tmp.add("SERVER_PROTOCOL=" + t.getHttpVersion());
-		tmp.add("SERVER_PORT=" + t.getConfig().httpPort);
+		tmp.add("SERVER_PORT=" + t.getConfig().getHttpPort());
 		tmp.add("REQUEST_METHOD=" + t.getHttpMethod());	
 		tmp.add("PATH_INFO=" + t.getHttpUrl());	
 		tmp.add("PATH_TRANSLATED=" + t.getHttpFilePath());
@@ -159,7 +159,7 @@ public class PerlPlugin extends Plugin
 		}
 	
 		
-		if(t.getConfig().httpKeepAlive)
+		if(t.getConfig().isHttpKeepAlive())
 			tmp.add("HTTP_CONNECTION=Keep-Alive");
 		
 		String[] strTmp = new String[tmp.size()];

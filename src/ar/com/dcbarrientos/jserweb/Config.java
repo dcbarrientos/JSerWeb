@@ -21,36 +21,36 @@ import java.util.*;
 import java.text.*;
 
 public class Config {
-	public int httpPort=80;
-	public int httpTimeout=30;
-	public String httpServerAdmin="postmaster@diegobar";
-	public String httpServerName="localhost";
-	public String httpDocumentRoot=getCurrentDirectory()+"/httpdoc";
-	public String httpServerRoot=getCurrentDirectory();
-	public boolean httpKeepAlive=true;
-	public String httpErrorsRoot=getCurrentDirectory()+"httperrors";
-	public String httpTempRoot=getCurrentDirectory()+"/temp";
-	public String httpLogRoot=getCurrentDirectory()+"/logs";
-	public String httpAccessFile="/access.log";
-	public String httpErrorFile="/error.log";
-	public int nPlugins = 0;//2;
+	private int httpPort=80;
+	private int httpTimeout=30;
+	private String httpServerAdmin="postmaster@diegobar";
+	private String httpServerName="localhost";
+	private String httpDocumentRoot=getCurrentDirectory()+"/httpdoc";
+	private String httpServerRoot=getCurrentDirectory();
+	private boolean httpKeepAlive=true;
+	private String httpErrorsRoot=getCurrentDirectory()+"httperrors";
+	private String httpTempRoot=getCurrentDirectory()+"/temp";
+	private String httpLogRoot=getCurrentDirectory()+"/logs";
+	private String httpAccessFile="/access.log";
+	private String httpErrorFile="/error.log";
+	private int nPlugins = 0;//2;
 	
-	Hashtable vhosts = new Hashtable();
-	Hashtable mime = new Hashtable();
-	Hashtable errors = new Hashtable();
-	Hashtable plugins = new Hashtable();
-	Vector directoryIndex = new Vector();
+	Hashtable<String, vHost> vhosts = new Hashtable<String, vHost>();
+	Hashtable<String, String> mime = new Hashtable<String, String>();
+	Hashtable<String, String> errors = new Hashtable<String, String>();
+	Hashtable<String, String> plugins = new Hashtable<String, String>();
+	Vector<String> directoryIndex = new Vector<String>();
 
 	static public final String SERVER_ID = "JSerWeb";
-	static final String AUTHOR = "Diego Barrientos";
-	static final String AUTHOR_MAIL = "dc_barrientos@yahoo.com.ar";
-	static final String VERSION = "1.0";
-	static final boolean DEBUG = false;
+	static public final String AUTHOR = "Diego Barrientos";
+	static public final String AUTHOR_MAIL = "dc_barrientos@yahoo.com.ar";
+	static public final String VERSION = "1.0";
+	static public final boolean DEBUG = false;
 	
-	static final String CIERRAVHOST = "CierraVHost";
-	static final char SEPARATOR_1 = ' ';
-	static final char SEPARATOR_2 = '\t';
-	static final char FILE_SEPARATOR = System.getProperties().getProperty("file.separator").charAt(0);
+	static public final String CIERRAVHOST = "CierraVHost";
+	static public final char SEPARATOR_1 = ' ';
+	static public final char SEPARATOR_2 = '\t';
+	static public final char FILE_SEPARATOR = System.getProperties().getProperty("file.separator").charAt(0);
 	Messages msg;
 	String key;
 	String value;
@@ -153,6 +153,7 @@ public class Config {
 						if(abierto){
 							msg.printErr("Config::cargaVHost():1", 
 								"Archivo de vhost.conf incorrecto.");
+							fileStream.close();
 							return false;
 						}else{
 							vhost = new vHost();
@@ -165,6 +166,7 @@ public class Config {
 							vhosts.put(addr, vhost);
 						}else{
 							msg.printErr("Config::cargaVHost():2", "Archivo de vhost.conf incorrecto.");
+							fileStream.close();
 							return false;
 						}
 					}	else if(key.equals("servername"))
@@ -416,7 +418,111 @@ public class Config {
 		}
 		return pluginVersion.trim();
 	}
-		
+				
+	public int getHttpPort() {
+		return httpPort;
+	}
+
+	public void setHttpPort(int httpPort) {
+		this.httpPort = httpPort;
+	}
+
+	public int getHttpTimeout() {
+		return httpTimeout;
+	}
+
+	public void setHttpTimeout(int httpTimeout) {
+		this.httpTimeout = httpTimeout;
+	}
+
+	public String getHttpServerAdmin() {
+		return httpServerAdmin;
+	}
+
+	public void setHttpServerAdmin(String httpServerAdmin) {
+		this.httpServerAdmin = httpServerAdmin;
+	}
+
+	public String getHttpServerName() {
+		return httpServerName;
+	}
+
+	public void setHttpServerName(String httpServerName) {
+		this.httpServerName = httpServerName;
+	}
+
+	public String getHttpDocumentRoot() {
+		return httpDocumentRoot;
+	}
+
+	public void setHttpDocumentRoot(String httpDocumentRoot) {
+		this.httpDocumentRoot = httpDocumentRoot;
+	}
+
+	public String getHttpServerRoot() {
+		return httpServerRoot;
+	}
+
+	public void setHttpServerRoot(String httpServerRoot) {
+		this.httpServerRoot = httpServerRoot;
+	}
+
+	public boolean isHttpKeepAlive() {
+		return httpKeepAlive;
+	}
+
+	public void setHttpKeepAlive(boolean httpKeepAlive) {
+		this.httpKeepAlive = httpKeepAlive;
+	}
+
+	public String getHttpErrorsRoot() {
+		return httpErrorsRoot;
+	}
+
+	public void setHttpErrorsRoot(String httpErrorsRoot) {
+		this.httpErrorsRoot = httpErrorsRoot;
+	}
+
+	public String getHttpTempRoot() {
+		return httpTempRoot;
+	}
+
+	public void setHttpTempRoot(String httpTempRoot) {
+		this.httpTempRoot = httpTempRoot;
+	}
+
+	public String getHttpLogRoot() {
+		return httpLogRoot;
+	}
+
+	public void setHttpLogRoot(String httpLogRoot) {
+		this.httpLogRoot = httpLogRoot;
+	}
+
+	public String getHttpAccessFile() {
+		return httpAccessFile;
+	}
+
+	public void setHttpAccessFile(String httpAccessFile) {
+		this.httpAccessFile = httpAccessFile;
+	}
+
+	public String getHttpErrorFile() {
+		return httpErrorFile;
+	}
+
+	public void setHttpErrorFile(String httpErrorFile) {
+		this.httpErrorFile = httpErrorFile;
+	}
+
+	public int getnPlugins() {
+		return nPlugins;
+	}
+
+	public void setnPlugins(int nPlugins) {
+		this.nPlugins = nPlugins;
+	}
+
 	String getStatus(int code)
 	{
 		switch(code)
