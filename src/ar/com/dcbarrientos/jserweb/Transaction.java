@@ -14,13 +14,16 @@
  *                                                                         *
  ***************************************************************************/
 
-package SerWeb;
+package ar.com.dcbarrientos.jserweb;
 
 import java.io.*;
 import java.lang.*;
 import java.lang.reflect.*;
 import java.net.*;
 import java.util.*;
+
+import ar.com.dcbarrientos.jserweb.plugins.PerlPlugin;
+import ar.com.dcbarrientos.jserweb.plugins.PhpPlugin;
 
 public class Transaction extends Thread{
 	Config config;
@@ -426,6 +429,226 @@ public class Transaction extends Thread{
 		ret += httpHostIp + "] " + strError + " " + httpFilePath;
 		
 		return ret;
+	}
+	
+	public String getHttpFileExt(){
+		return httpFileExt;
+	}
+	
+	public void setHttpFileExt(String httpFileExt){
+		this.httpFileExt = httpFileExt;
+	}
+	
+	public int getHttpStatus(){
+		return httpStatus;
+	}
+	
+	public void setHttpStatus(int httpStatus){
+		this.httpStatus = httpStatus;
+	}		
+	
+	public String getHttpMethod() {
+		return httpMethod;
+	}
+
+	public void setHttpMethod(String httpMethod) {
+		this.httpMethod = httpMethod;
+	}
+
+	public String getHttpUrl() {
+		return httpUrl;
+	}
+
+	public void setHttpUrl(String httpUrl) {
+		this.httpUrl = httpUrl;
+	}
+
+	public String getHttpVersion() {
+		return httpVersion;
+	}
+
+	public void setHttpVersion(String httpVersion) {
+		this.httpVersion = httpVersion;
+	}
+
+	public String getHttpAccept() {
+		return httpAccept;
+	}
+
+	public void setHttpAccept(String httpAccept) {
+		this.httpAccept = httpAccept;
+	}
+
+	public String getHttpLanguage() {
+		return httpLanguage;
+	}
+
+	public void setHttpLanguage(String httpLanguage) {
+		this.httpLanguage = httpLanguage;
+	}
+
+	public String getHttpEncoding() {
+		return httpEncoding;
+	}
+
+	public void setHttpEncoding(String httpEncoding) {
+		this.httpEncoding = httpEncoding;
+	}
+
+	public String getHttpUserAgent() {
+		return httpUserAgent;
+	}
+
+	public void setHttpUserAgent(String httpUserAgent) {
+		this.httpUserAgent = httpUserAgent;
+	}
+
+	public String getHttpHost() {
+		return httpHost;
+	}
+
+	public void setHttpHost(String httpHost) {
+		this.httpHost = httpHost;
+	}
+
+	public String getHttpConnection() {
+		return httpConnection;
+	}
+
+	public void setHttpConnection(String httpConnection) {
+		this.httpConnection = httpConnection;
+	}
+
+	public String getHttpHostIp() {
+		return httpHostIp;
+	}
+
+	public void setHttpHostIp(String httpHostIp) {
+		this.httpHostIp = httpHostIp;
+	}
+
+	public String getHttpFilePath() {
+		return httpFilePath;
+	}
+
+	public void setHttpFilePath(String httpFilePath) {
+		this.httpFilePath = httpFilePath;
+	}
+
+	public String getHttpContentType() {
+		return httpContentType;
+	}
+
+	public void setHttpContentType(String httpContentType) {
+		this.httpContentType = httpContentType;
+	}
+
+	public String getHttpInContentType() {
+		return httpInContentType;
+	}
+
+	public void setHttpInContentType(String httpInContentType) {
+		this.httpInContentType = httpInContentType;
+	}
+
+	public String getHttpCurrentDate() {
+		return httpCurrentDate;
+	}
+
+	public void setHttpCurrentDate(String httpCurrentDate) {
+		this.httpCurrentDate = httpCurrentDate;
+	}
+
+	public String getHttpFileLength() {
+		return httpFileLength;
+	}
+
+	public void setHttpFileLength(String httpFileLength) {
+		this.httpFileLength = httpFileLength;
+	}
+
+	public String getHttpFileLastModified() {
+		return httpFileLastModified;
+	}
+
+	public void setHttpFileLastModified(String httpFileLastModified) {
+		this.httpFileLastModified = httpFileLastModified;
+	}
+
+	public String getHttpRefer() {
+		return httpRefer;
+	}
+
+	public void setHttpRefer(String httpRefer) {
+		this.httpRefer = httpRefer;
+	}
+
+	public String getHttpCacheControl() {
+		return httpCacheControl;
+	}
+
+	public void setHttpCacheControl(String httpCacheControl) {
+		this.httpCacheControl = httpCacheControl;
+	}
+
+	public String getHttpSetCookie() {
+		return httpSetCookie;
+	}
+
+	public void setHttpSetCookie(String httpSetCookie) {
+		this.httpSetCookie = httpSetCookie;
+	}
+
+	public String getHttpTempFilePath() {
+		return httpTempFilePath;
+	}
+
+	public void setHttpTempFilePath(String httpTempFilePath) {
+		this.httpTempFilePath = httpTempFilePath;
+	}
+
+	public String getHttpLocation() {
+		return httpLocation;
+	}
+
+	public void setHttpLocation(String httpLocation) {
+		this.httpLocation = httpLocation;
+	}
+
+	public String getHttpCookie() {
+		return httpCookie;
+	}
+
+	public void setHttpCookie(String httpCookie) {
+		this.httpCookie = httpCookie;
+	}
+
+	public byte[] getHttpPostQuery() {
+		return httpPostQuery;
+	}
+
+	public void setHttpPostQuery(byte[] httpPostQuery) {
+		this.httpPostQuery = httpPostQuery;
+	}
+
+	public int getHttpContentLength() {
+		return httpContentLength;
+	}
+
+	public void setHttpContentLength(int httpContentLength) {
+		this.httpContentLength = httpContentLength;
+	}
+
+	public String getHttpQuery() {
+		return httpQuery;
+	}
+
+	public void setHttpQuery(String httpQuery) {
+		this.httpQuery = httpQuery;
+	}
+
+	public Config getConfig(){
+		return config;
 	}
 	
 	void printLog()

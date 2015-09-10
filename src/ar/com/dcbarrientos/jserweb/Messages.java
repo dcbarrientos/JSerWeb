@@ -14,12 +14,12 @@
  *                                                                         *
  ***************************************************************************/
 
-package SerWeb;
+package ar.com.dcbarrientos.jserweb;
 
 public class Messages {
 	Config config;
 	
-	Messages(Config c)
+	public Messages(Config c)
 	{
 		config = c;
 	}

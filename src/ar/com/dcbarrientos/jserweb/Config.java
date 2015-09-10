@@ -14,7 +14,7 @@
  *                                                                         *
  ***************************************************************************/
 
-package SerWeb;
+package ar.com.dcbarrientos.jserweb;
 
 import java.io.*;
 import java.util.*;
@@ -41,7 +41,7 @@ public class Config {
 	Hashtable plugins = new Hashtable();
 	Vector directoryIndex = new Vector();
 
-	static final String SERVER_ID = "JSerWeb";
+	static public final String SERVER_ID = "JSerWeb";
 	static final String AUTHOR = "Diego Barrientos";
 	static final String AUTHOR_MAIL = "dc_barrientos@yahoo.com.ar";
 	static final String VERSION = "1.0";

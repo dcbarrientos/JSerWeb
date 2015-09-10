@@ -13,7 +13,7 @@
  *   (at your option) any later version.                                   *
  *                                                                         *
  ***************************************************************************/
-package SerWeb;
+package ar.com.dcbarrientos.jserweb;
 
 public abstract class Plugin 
 {
