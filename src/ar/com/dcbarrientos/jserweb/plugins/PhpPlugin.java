@@ -50,9 +50,7 @@ public class PhpPlugin extends Plugin
 			return false;
 		}
 			
-		//DataInputStream in = new DataInputStream(proc.getInputStream());
 		BufferedReader in = new BufferedReader(new InputStreamReader(proc.getInputStream()));
-		//OutputStream procOut = proc.getOutputStream();
 		BufferedWriter procOut = new BufferedWriter(new OutputStreamWriter(proc.getOutputStream()));		
 		if(proc!=null && transaction.getHttpPostQuery()!=null && transaction.getHttpMethod().equals("POST")){
 			try{
@@ -66,8 +64,6 @@ public class PhpPlugin extends Plugin
 		}			
 		
 		String tmpFile = transaction.getConfig().getTmpFile();
-//		String line = "";
-		//byte[] buffer = new byte[65536];
 		char[] buffer = new char[Config.BUFFER_SIZE];
 		if(proc!=null){			
 			try{				
@@ -75,7 +71,6 @@ public class PhpPlugin extends Plugin
 					transaction.setHttpStatus(500);
 					return false;
 				}
-				//DataOutputStream out = new DataOutputStream(new FileOutputStream(tmpFile));
 				BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(tmpFile)));
 
 				int r = in.read(buffer);

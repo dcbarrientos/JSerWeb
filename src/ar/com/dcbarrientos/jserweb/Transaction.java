@@ -25,7 +25,6 @@ import ar.com.dcbarrientos.jserweb.plugins.PhpPlugin;
 
 public class Transaction extends Thread{
 	Config config;
-	//DataInputStream in;
 	BufferedReader in;
 	DataOutputStream out;
 	Socket connection;
@@ -56,7 +55,6 @@ public class Transaction extends Thread{
 	String httpTempFilePath="";
 	String httpLocation="";
 	String httpCookie="";
-	//byte[] httpPostQuery;
 	char[] httpPostQuery;
 	int httpContentLength=0;
 	int httpStatus=-1;
@@ -75,7 +73,6 @@ public class Transaction extends Thread{
 	public void run(){
 		try
 		{	
-			//in = new DataInputStream(connection.getInputStream());
 			in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 			out = new DataOutputStream(connection.getOutputStream());
 		}catch(IOException e)
@@ -237,7 +234,6 @@ public class Transaction extends Thread{
 			}
 		}
 		
-//		byte[] others=null;
 		if(httpContentLength>0){
 			try{
 				httpPostQuery = new char[httpContentLength];
@@ -374,7 +370,6 @@ public class Transaction extends Thread{
 		}catch(FileNotFoundException e){
 			msg.printErr("Transaction::sendResponse():1", "El archivo no existe: " + fileName);
 		}catch(IOException e){
-//			System.out.println(e.getMessage());
 			msg.printErr("Transaction::sendResponse():2", "Error en la lectura del archivo: " + fileName);
 		}
 		
