@@ -17,10 +17,11 @@ package ar.com.dcbarrientos.jserweb.plugins;
 
 import java.util.Vector;
 import java.io.IOException;
-import java.io.DataInputStream;
-import java.io.OutputStream;
+import java.io.InputStreamReader;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.OutputStreamWriter;
 import java.io.FileOutputStream;
-import java.io.DataOutputStream;
 
 import ar.com.dcbarrientos.jserweb.Plugin;
 import ar.com.dcbarrientos.jserweb.Transaction;
@@ -49,8 +50,10 @@ public class PhpPlugin extends Plugin
 			return false;
 		}
 			
-		DataInputStream in = new DataInputStream(proc.getInputStream());
-		OutputStream procOut = proc.getOutputStream();
+		//DataInputStream in = new DataInputStream(proc.getInputStream());
+		BufferedReader in = new BufferedReader(new InputStreamReader(proc.getInputStream()));
+		//OutputStream procOut = proc.getOutputStream();
+		BufferedWriter procOut = new BufferedWriter(new OutputStreamWriter(proc.getOutputStream()));		
 		if(proc!=null && transaction.getHttpPostQuery()!=null && transaction.getHttpMethod().equals("POST")){
 			try{
 				procOut.write(transaction.getHttpPostQuery());
@@ -64,15 +67,17 @@ public class PhpPlugin extends Plugin
 		
 		String tmpFile = transaction.getConfig().getTmpFile();
 //		String line = "";
-		byte[] buffer = new byte[65536];
+		//byte[] buffer = new byte[65536];
+		char[] buffer = new char[Config.BUFFER_SIZE];
 		if(proc!=null){			
 			try{				
 				if(!getHeader(in, transaction)){
 					transaction.setHttpStatus(500);
 					return false;
 				}
-				DataOutputStream out = new DataOutputStream(new FileOutputStream(tmpFile));
-				
+				//DataOutputStream out = new DataOutputStream(new FileOutputStream(tmpFile));
+				BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(tmpFile)));
+
 				int r = in.read(buffer);
 
 				while(r!=-1){
@@ -92,7 +97,7 @@ public class PhpPlugin extends Plugin
 	}
 	
 	
-	boolean getHeader(DataInputStream in, Transaction t){
+	boolean getHeader(BufferedReader in, Transaction t){
 		int i=0;
 		String line="";
 

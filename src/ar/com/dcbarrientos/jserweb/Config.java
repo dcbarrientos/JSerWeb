@@ -58,6 +58,7 @@ public class Config {
 	static public final String VERSION = "1.0";
 	static public final boolean DEBUG = false;
 	
+	static public final int BUFFER_SIZE = 65536;
 	static public final String CIERRAVHOST = "CierraVHost";
 	static public final char SEPARATOR_1 = ' ';
 	static public final char SEPARATOR_2 = '\t';
